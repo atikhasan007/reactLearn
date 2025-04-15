@@ -26,7 +26,10 @@ export const router = createBrowserRouter([
         element: <App />
     },{
         path : '/posts',
-        element : <PostList />
+        element : <PostList />,
+        loader: ()=>
+            fetch(`https://jsonplaceholder.typicode.com/posts/?_limit=5`),
+        
     },{
         path : '/posts/:postId',
         element : <PostDetails/>
