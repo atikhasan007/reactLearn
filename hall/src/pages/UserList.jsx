@@ -1,23 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { useFetch } from '../hooks/useFetch'
 
 const UserList = () => {
-    const [users, setUsers] = useState([]);
-    const [isLoading , setIsLoading] = useState(true);
-    const [errorMessage, setErrorMessage] = useState('');
-    
-    useEffect(()=>{
-        fetch(`https://jsonplaceholder.typicode.com/users/?_limit=5`). 
-        then((res)=>res.json()). 
-        then((data)=>{
-            setUsers(data);
-            setIsLoading(false);
-            setErrorMessage('');
-        }).catch((err)=>{
-            setErrorMessage(err.message);
-            setIsLoading(false);
-            setUsers([]);
-        })
-    },[])
+  const {data,isLoading,errorMessage} = useFetch(`https://jsonplaceholder.typicode.com/users/?_limit=5`, [])
 
   return (
     <div>
@@ -26,7 +11,7 @@ const UserList = () => {
       {errorMessage && <h3>{errorMessage}</h3>}
 
       <ul>
-        {users.map((user)=>
+        {data.map((user)=>
             <li>{user.name}</li>
         )}
       </ul>

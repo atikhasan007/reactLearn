@@ -27,6 +27,9 @@ const RoutLayout = () => {
                 <li>
                     <Link to={`/all-users`}>All User</Link>
                 </li>
+               <li>
+                    <Link to={`/counter-app`}>Counter-app</Link>
+                </li>
 
             </ul>
         </nav>

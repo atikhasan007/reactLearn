@@ -8,6 +8,7 @@ import PostList from "../pages/PostList.jsx";
 import ErrorPage from "../pages/ErrorPage.jsx";
 import PostDetails from "../pages/PostDetails.jsx";
 import UserList from "../pages/UserList.jsx";
+import CounterApp from "../pages/CounterApp.jsx";
 export const router = createBrowserRouter([
    {
     path : '/',
@@ -36,6 +37,9 @@ export const router = createBrowserRouter([
     },{
         path : 'all-users',
         element: <UserList />
+    },{
+        path: 'counter-app',
+        element: <CounterApp/>
     }],
    }
     

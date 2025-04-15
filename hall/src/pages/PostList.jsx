@@ -1,29 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useFetch } from '../hooks/useFetch';
+
+
+// useState => use state
+//useReducer => use Reducer
+//useContext => use Context
+
+
+
+
 
 
 const PostList = () => {
-    const [posts, setPosts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [errorMessage, setErrorMessage] = useState("");
-
-
-    useEffect(()=>{
-        fetch(`https://jsonplaceholder.typicode.com/posts/?_limit=5`). 
-        then((res)=> res.json()). 
-        then((data)=> {
-          setPosts(data);
-          setIsLoading(false);
-          setErrorMessage("");
-        }).catch((err)=>{
-          setErrorMessage(err.message);
-          setIsLoading(false);
-          setPosts([]);
-        })
-
-
-        
-    },[])
+   const {data, isLoading,errorMessage} =  useFetch(`https://jsonplaceholder.typicode.com/posts/?_limit=5`, [])
 
   return (
     <div>
@@ -32,7 +22,7 @@ const PostList = () => {
         {errorMessage && <h3>{errorMessage}</h3>}
 
         {
-            posts.map((post)=>
+            data.map((post)=>
             
                     <li key={post.id}>
                        <Link to={`/posts/${post.id}`}>{post.title}</Link>  
