@@ -4,14 +4,33 @@ const PostDetails = () => {
 
   const [post, setPost] = useState(null);
   const { postId } = useParams();
-  
-  console.log(postId);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isErrorMessage, setIsErrorMessage] = useState("");
+
+
   
  useEffect(()=>{
         fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`). 
         then((res)=> res.json()). 
-        then((data)=> setPost(data))
+        then((data)=> {
+          setPost(data);
+          setIsLoading(false);
+          setIsErrorMessage("");
+        }).catch((err)=>{
+          setIsErrorMessage(err.message);
+          setIsLoading(false);
+          setPost(null);
+          
+       
+        })
     },[postId])
+
+    if(isLoading){
+      return <h3>Loading ........</h3>
+    }
+    if(isErrorMessage){
+      return <h3>{isErrorMessage}</h3>
+    }
 
 
   return (

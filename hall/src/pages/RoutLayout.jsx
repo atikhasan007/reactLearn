@@ -24,6 +24,10 @@ const RoutLayout = () => {
                 <li>
                     <Link to={`/posts`}>PostList</Link>
                 </li>
+                <li>
+                    <Link to={`/all-users`}>All User</Link>
+                </li>
+
             </ul>
         </nav>
     </div>

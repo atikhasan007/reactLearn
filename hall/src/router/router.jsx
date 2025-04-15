@@ -7,6 +7,7 @@ import App from '../App.jsx'
 import PostList from "../pages/PostList.jsx";
 import ErrorPage from "../pages/ErrorPage.jsx";
 import PostDetails from "../pages/PostDetails.jsx";
+import UserList from "../pages/UserList.jsx";
 export const router = createBrowserRouter([
    {
     path : '/',
@@ -26,13 +27,15 @@ export const router = createBrowserRouter([
         element: <App />
     },{
         path : '/posts',
-        element : <PostList />,
-        loader: ()=>
-            fetch(`https://jsonplaceholder.typicode.com/posts/?_limit=5`),
+        element : <PostList />
+       
         
     },{
         path : '/posts/:postId',
         element : <PostDetails/>
+    },{
+        path : 'all-users',
+        element: <UserList />
     }],
    }
     
