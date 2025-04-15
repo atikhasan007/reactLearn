@@ -1,16 +1,37 @@
-import React from 'react'
-import { useCounter } from '../hooks/useCounter'
+import React, { useState } from 'react';
+import Title from '../components/Title';
+import CounterAppTitle from '../components/CounterAppTitle';
 
 const CounterApp = () => {
-    const {counter,increaseHandler,decreaseHandler} = useCounter();
-console.log(counter)
+  console.log("i am counter app");
+     const [counter, setCounter] = useState(15);
+     const [counter2, setCounter2] = useState(10);
+        const increaseHandler = () =>{
+            setCounter((prev)=> prev + 1);
+        }
+
+
+        const increaseHandler2 = () =>{
+            setCounter2((prev)=> prev + 1);
+        }
+      
   return (
     <div>
-        <p>The value of the Counter is {counter}</p>
-        <button onClick={increaseHandler}>Increase by 1</button>
+         <Title/>
+       <div className='counter-app-1'>
+                <CounterAppTitle value={counter}/>
+                <button onClick={increaseHandler}>Increase by 1</button>
 
-        <button onClick={decreaseHandler}>Decrease by 1</button>
-      
+                
+       </div>
+         <hr/>
+
+       <div className='counter-app-2'>
+                <CounterAppTitle value={counter2}/>
+                <button onClick={increaseHandler2}>Increase by 1</button>
+
+                
+       </div>
     </div>
   )
 }
